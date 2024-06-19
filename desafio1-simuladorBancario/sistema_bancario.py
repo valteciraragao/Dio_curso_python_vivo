@@ -47,9 +47,9 @@ while True:
             print("Não houve movimentação no período solicitado")
         else:
             print(f"""
-                  ########## DioBank --- EXTRATO DE MOVIMENTAÇÃO BANCÁRIA ##########
-                  {extrato}
-                  """)    
+                ########## DioBank --- EXTRATO DE MOVIMENTAÇÃO BANCÁRIA ##########
+                {extrato}
+                """)    
     elif opcao == 3:
         break
     else:
