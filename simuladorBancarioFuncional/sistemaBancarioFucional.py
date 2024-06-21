@@ -1,12 +1,13 @@
 def banco():
     LIMITESAQUE_DIARIO = 3
-    # AGENCIA = "0001"
+    AGENCIA = "0001"
     saldo = 0
+    numero_conta = 1
     saque_limite = 500
     extrato = ""
     quantidade_saque = 0
     clientes = []
-    # contas = []
+    contas = []
     
     while True:
         opcao = menu()
@@ -27,8 +28,20 @@ def banco():
             mostrar_extrato(saldo, extrato=extrato)
         elif opcao == 3:
             cadastrar_cliente(clientes)
-        else:
+        elif opcao == 4:
+            conta = cadastrar_conta(
+                agencia_conta=AGENCIA, 
+                conta=numero_conta, 
+                clientes_conta=clientes
+            )
+            contas.append(conta)
+            numero_conta += 1
+        elif opcao == 5:
+            print("######## Obrigado por utilizar o DIOBANK, até a próxima! ########")
             break
+        else:
+            print("Opção invalida, informe a opção desejada.")
+                
 
 
 def menu():
@@ -38,8 +51,10 @@ def menu():
     0 - Depositar 
     1 - Sacar 
     2 - Extrato
-    3 - Cadastrar Cliente 
-    4 - Sair => """
+    3 - Cadastrar Cliente
+    4 - Criar Conta 
+    5 - Sair 
+    ###### => """
     return int(input(menu))
 
 def realizar_deposito(saldo, valor, extrato):
@@ -110,12 +125,17 @@ def cadastrar_cliente(clientes):
             return
 
 def buscar_cliente(cpf_cliente, lista_clientes):
-    for cliente in lista_clientes:
-        if cpf_cliente == cliente["cpf"]:
-            return "cpf_invalido"
+    cliente_buscado = [cliente for cliente in lista_clientes if cliente["cpf"] == cpf_cliente]
+    return cliente_buscado[0] if cliente_buscado else "cpf_invalido"
 
-def cadastrar_conta():
+def cadastrar_conta(conta, agencia_conta, clientes_conta):
+    print(" ######## DIOBANK Cadastro de Conta ########")
+    cpf = input("Digite seu CPF: ")
+    cliente = buscar_cliente(cpf, clientes_conta)
+    if cliente != "cpf_invalido":
+        print("Parabéns sua conta DIOBANK foi criada com sucesso!")
+        return {'conta': conta, 'agencia': agencia_conta, 'cliente': cliente}
     
-    
+    print("###### Cliente não encontrado, aproveite e se cadastre em nosso menu de opções! DIOBANK sempre com você ######")
 
 banco()
