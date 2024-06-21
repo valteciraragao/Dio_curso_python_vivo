@@ -93,7 +93,7 @@ def mostrar_extrato(saldo, /, *, extrato):
     
 def cadastrar_cliente(clientes):
     cpf = input("Digite seu cpf: ")
-    if len(cpf) < 11:
+    if len(cpf) != 11:
         print("CPF inválido.")
         cpf = input("Digite seu cpf: ")
         
