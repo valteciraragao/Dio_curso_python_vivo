@@ -47,7 +47,6 @@ def banco():
             print("Opção invalida, informe a opção desejada.")
                 
 
-
 def menu():
     menu = """" 
     ################ Bem-vindo ao DIOBANK o banco digital que pensa em você! ################
@@ -115,7 +114,7 @@ def cadastrar_cliente(clientes):
             cep = input("Digite seu CEP: ")
             logradouro = input("Digite o seu logradouro: ")
             numero = input("Digite o numero: ")
-            bairro = input("Digite seu bairro: ")
+            bairro = input("Digite seu bairrclass Clienteo: ")
             cidade = input("Digite sua cidade: ")
             estado = input("Digite a sigla do seu estado (Ex.: RJ / BA / ETC): ")
             endereco = f"Endereço:\t{logradouro}\t{numero}\t{bairro}\t{cidade} / {estado} - {cep}"
